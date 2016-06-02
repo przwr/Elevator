@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
@@ -25,7 +26,7 @@ public class Main extends Application {
     GraphicsContext gc;
     Animation animation;
     int height = 140;
-    private int floorsCount = 5;
+    private int floorsCount = 4;
     private ArrayList<Person>[] people = new ArrayList[floorsCount + 1];
 
     {
@@ -59,7 +60,10 @@ public class Main extends Application {
 
         Canvas canvas = new Canvas(600, (floorsCount + 1) * (height + 26));
         gc = canvas.getGraphicsContext2D();
-        main.setCenter(canvas);
+        ScrollPane sp = new ScrollPane();
+        sp.setContent(canvas);
+        sp.setPadding(new Insets(0, 0, 0, 0));
+        main.setCenter(sp);
 
         controller.setButtons(buttons.getChildren(), floorsCount, elevator, people);
         primaryStage.setScene(new Scene(main, 600 + 300, (floorsCount + 1) * (height + 26) + 70));
@@ -80,8 +84,8 @@ public class Main extends Application {
         gc.setFill(Color.BLACK);
         gc.setStroke(Color.BLACK);
         gc.setLineWidth(2);
-        gc.strokeLine(491, 1, 491, (floorsCount) * 200);
-        gc.strokeLine(599, 1, 599, (floorsCount) * 200);
+        gc.strokeLine(491, 1, 491, (floorsCount + 1) * 165);
+        gc.strokeLine(599, 1, 599, (floorsCount + 1) * 165);
         gc.setLineWidth(6);
         for (int i = 0; i <= floorsCount; i++) {
             gc.strokeLine(0, 3, i == 0 ? 600 : 489, 3);
