@@ -130,11 +130,11 @@ public class Main extends Application {
         to.setCellValueFactory(new PropertyValueFactory<Stat, Integer>("destination"));
         to.setStyle("-fx-alignment: CENTER;");
 
-        TableColumn total = new TableColumn("Podróż (s)");
+        TableColumn total = new TableColumn("Podróż");
         total.setCellValueFactory(new PropertyValueFactory<Stat, Integer>("timeTotal"));
         total.setStyle("-fx-alignment: CENTER;");
 
-        TableColumn inElevator = new TableColumn("Oczekiwanie (s)");
+        TableColumn inElevator = new TableColumn("Oczekiwanie");
         inElevator.setCellValueFactory(new PropertyValueFactory<Stat, Integer>("timeWaiting"));
         inElevator.setStyle("-fx-alignment: CENTER;");
 
